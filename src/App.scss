@@ -1,0 +1,97 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+h1 {
+	text-align: center;
+}
+#root {
+	max-width: 80%;
+	width: 100%;
+	margin: auto;
+}
+.container {
+	border-radius: 5px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	margin: auto;
+	padding: 20px;
+	background-color: #fff;
+	justify-content: space-between;
+	.column {
+		flex-basis: 100%;
+		padding: 20px;
+		border-bottom: 1px solid #cacaca;
+		display: flex;
+		flex-wrap: wrap;
+		&:last-child {
+			border-bottom: 0;
+		}
+		&.cartas {
+			justify-content: center;
+		}
+		.carta {
+			width: 25%;
+			padding: 5px;
+			min-height: 200px;
+			img {
+				width: 100%;
+			}
+		}
+	}
+}
+form {
+	width: 100%;
+	.input {
+		display: flex;
+		flex-direction: column;
+		margin-bottom: 20px;
+		label {
+			font-size: 12px;
+			text-align: center;
+			font-size: 18px;
+			margin-bottom: 20px;
+		}
+		&:last-child {
+			margin-bottom: 0;
+		}
+		select {
+			outline: 0;
+		}
+	}
+}
+.lazyload {
+	display: block;
+	border: 5px solid #e0e0e0;
+	border-radius: 5px;
+	width: 100%;
+	min-height: 200px;
+	position: relative;
+	&::before {
+		content: '';
+		display: block;
+		position: absolute;
+		top: 50%;
+		left: 0;
+		width: 100%;
+		transform: translate(0, -50%);
+		height: 25px;
+		background-image: linear-gradient(to right, #e0e0e0, #9a9a9a, #e0e0e0);
+		background-repeat: repeat;
+		background-size: 120px;
+		animation-duration: 1s;
+		animation-iteration-count: infinite;
+		animation-name: loading;
+		animation-timing-function: linear;
+	}
+}
+@keyframes loading {
+	from {
+		background-position: 0 0;
+	}
+	to {
+		background-position: 120px 0;
+	}
+}
