@@ -95,3 +95,29 @@ form {
 		background-position: 120px 0;
 	}
 }
+@media (max-width: 991px) {
+	#root {
+		max-width: 100%;
+	}
+	.container {
+		.column {
+			padding: 20px 0;
+			.carta {
+				width: calc(100%/3);
+			}
+		}
+	}
+}
+@media (max-width: 767px) {
+	#root {
+		max-width: 100%;
+	}
+	.container {
+		.column {
+			padding: 20px 0;
+			.carta {
+				width: 50%;
+			}
+		}
+	}
+}
