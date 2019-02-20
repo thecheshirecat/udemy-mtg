@@ -43,25 +43,31 @@ class App extends Component {
 		var cartas = []
 		var multiverseId = []
 		var cartaMatch = false
-		cartasSet.map(carta => {
-			// Comprobamos que no esté repetida la carta anterior
-			for(var i = 0; i < cartas.length; i++) {
-				if(cartas[i].name === carta.name) {
-					cartaMatch = true;
-				}
-			}
-			if( !cartaMatch ) {
-				cartas.push(carta)
-				multiverseId.push(carta.multiverseId)
-			}
-			cartaMatch = false;
-		})
 		this.setState({
-			idEdicionSeleccionada,
-			multiverseId,
-			cartas,
-			paginaCargada: false
+			cartas: [],
+			multiverseId: []
+		}, () => {
+			cartasSet.map(carta => {
+				// Comprobamos que no esté repetida la carta anterior
+				for(var i = 0; i < cartas.length; i++) {
+					if(cartas[i].name === carta.name) {
+						cartaMatch = true;
+					}
+				}
+				if( !cartaMatch ) {
+					cartas.push(carta)
+					multiverseId.push(carta.multiverseId)
+				}
+				cartaMatch = false;
+			})
+			this.setState({
+				idEdicionSeleccionada,
+				multiverseId,
+				cartas,
+				paginaCargada: false
+			})
 		})
+		
 	}
 
 	render() {
