@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SelectorCartas from './form/SelectorCartas';
+import SelectorCartas from './components/SelectorCartas';
 import './App.scss';
 import ListadoCartas from './ListadoCartas';
 
@@ -19,7 +19,7 @@ class App extends Component {
         var nombreEdiciones = ['Select a set'];
         var idEdiciones = [''];
         // Recogemos todo el set de Modern
-        fetch('https://mtgjson.com/json/Standard.json')
+        fetch('http://mtgjson.com/json/Standard.json')
         .then(resp => resp.json())
         .then(data => {
             Object.keys(data).map( key => {
@@ -38,6 +38,10 @@ class App extends Component {
 	}
 
 	_changeEditionSelected = (idEdicionSeleccionada) => {
+		// Comprobamos el id de la carta no sea null o vacío
+		if(idEdicionSeleccionada === "" || idEdicionSeleccionada === null) {
+			return;
+		}
 		// Guardamos el id de la edición seleccionada y mostramos todas sus cartas (excluyendo las Foil)
 		var cartasSet = this.state.setCompleto[idEdicionSeleccionada].cards
 		var cartas = []
@@ -59,6 +63,7 @@ class App extends Component {
 					multiverseId.push(carta.multiverseId)
 				}
 				cartaMatch = false;
+				return null;
 			})
 			this.setState({
 				idEdicionSeleccionada,

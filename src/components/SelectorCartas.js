@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
-import Dropdown from '../components/Dropdown';
+import Dropdown from './Dropdown';
 
 class SelectorCartas extends Component {
-
-    // shouldComponentUpdate(nextProps, nextState) {
-    //     if( this.props.fullSet.idEdiciones.length !== nextProps.fullSet.idEdiciones.length ) {
-    //         return true;
-    //     }
-    // }
     _changeEdition = (edition) => {
         this.props.updateEditionSelected(edition);
     }
